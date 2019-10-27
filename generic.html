@@ -1,0 +1,456 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Generic - Hyperspace by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">Hyperspace</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="generic.html" class="active">Generic</a></li>
+						<li><a href="elements.html">Elements</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper">
+						<div class="inner">
+							<h1 class="major">The All-New iPhone 11</h1>
+
+							<button id='btnGiveCommand'>Give Command!</button>
+    						<br><br>
+    						<span id='message'></span>
+    						<br><br>
+							
+							<span class="image fit"><img src="images/blackiphone11.jpg"  alt="" /></span>
+
+							<script>
+								var message = document.querySelector('#message');
+								var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+								var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
+								var grammar = '#JSGF V1.0;'
+								var recognition = new SpeechRecognition();
+								var speechRecognitionList = new SpeechGrammarList();
+								speechRecognitionList.addFromString(grammar, 1);
+								recognition.grammars = speechRecognitionList;
+								recognition.lang = 'en-US';
+								recognition.interimResults = false;
+								recognition.onresult = function(event) {
+									var last = event.results.length - 1;
+									var command = event.results[last][0].transcript;
+									message.textContent = 'Voice Input: ' + command + '.';
+									if(command.toLowerCase() === 'camera'){
+										document.getElementById('maincamera').click();
+									}
+									else if (command.toLowerCase() === 'feature'){
+										document.getElementById('feature').click();
+									}
+									else if (command.toLowerCase() === 'purchase'){
+										document.getElementById('buy').click();
+									}
+									else if (command.toLowerCase() === 'select promotions'){
+										document.getElementById('selectPromotions').click();
+									}   
+								};
+								recognition.onspeechend = function() {
+									recognition.stop();
+								};
+								recognition.onerror = function(event) {
+									message.textContent = 'Error occurred in recognition: ' + event.error;
+								}        
+								document.querySelector('#btnGiveCommand').addEventListener('click', function(){
+									recognition.start();
+								});
+							</script>
+
+							<table cellspacing="0">
+								<tr class="tr-hover">
+								<th rowspan="15" scope="row">Network</th>
+								<td class="ttl"><a href="generic copy.html" id='buy'>Technology</a></td>
+								<td class="nfo"><a href="#" class="link-network-detail collapse" data-spec="nettech">GSM / CDMA / HSPA / EVDO / LTE</a></td>
+								</tr>
+								<tr class="tr-toggle">
+								<td class="ttl"><a href="network-bands.php3">2G bands</a></td>
+								<td class="nfo" data-spec="net2g">GSM 850 / 900 / 1800 / 1900 - SIM 1 & SIM 2 (dual-SIM) - for China</td>
+								</tr><tr class="tr-toggle" data-spec-optional>
+								<td class="ttl">&nbsp;</td>
+								<td class="nfo">CDMA 800 / 1900 </td>
+								</tr>
+								<tr class="tr-toggle">
+								<td class="ttl"><a href="network-bands.php3">3G bands</a></td>
+								<td class="nfo" data-spec="net3g">HSDPA 850 / 900 / 1700(AWS) / 1900 / 2100 </td>
+								</tr>
+								<tr class="tr-toggle" data-spec-optional>
+								<td class="ttl">&nbsp;</td>
+								<td class="nfo">CDMA2000 1xEV-DO </td>
+								</tr>
+								<tr class="tr-toggle">
+								<td class="ttl"><a href="network-bands.php3">4G bands</a></td>
+								<td class="nfo" data-spec="net4g">LTE band 1(2100), 2(1900), 3(1800), 4(1700/2100), 5(850), 7(2600), 8(900), 11(1500), 12(700), 13(700), 17(700), 18(800), 19(800), 20(800), 21(1500), 25(1900), 26(850), 28(700), 29(700), 30(2300), 32(1500), 34(2000), 38(2600), 39(1900), 40(2300), 41(2500), 42(3500), 46(5200), 48, 66(1700/2100) - A2221</td>
+								</tr>
+								<tr class="tr-toggle" data-spec-optional>
+								<td class="ttl">&nbsp;</td>
+								<td class="nfo">LTE band 1(2100), 2(1900), 3(1800), 4(1700/2100), 5(850), 7(2600), 8(900), 12(700), 13(700), 14(700), 17(700), 18(800), 19(800), 20(800), 25(1900), 26(850), 29(700), 30(2300), 34(2000), 38(2600), 39(1900), 40(2300), 41(2500), 42(3500), 46(5200), 48, 66(1700/2100), 71(600) - A2111</td>
+								</tr>
+								<tr class="tr-toggle" data-spec-optional>
+								<td class="ttl">&nbsp;</td>
+								<td class="nfo">LTE band 1(2100), 2(1900), 3(1800), 4(1700/2100), 5(850), 7(2600), 8(900), 12(700), 13(700), 14(700), 17(700), 18(800), 19(800), 20(800), 25(1900), 26(850), 29(700), 30(2300), 34(2000), 38(2600), 39(1900), 40(2300), 41(2500), 42(3500), 46(5200), 48, 66(1700/2100), 71(600) - A2223</td>
+								</tr>
+								<tr class="tr-toggle">
+								<td class="ttl"><a href="glossary.php3?term=3g">Speed</a></td>
+								<td class="nfo" data-spec="speed">HSPA 42.2/5.76 Mbps, LTE-A (CA) Cat16 1024/150 Mbps, EV-DO Rev.A 3.1 Mbps</td>
+								</tr>
+									
+								
+									
+								
+								
+								</table>
+								
+								
+								<table cellspacing="0">
+								<tr>
+								<th rowspan="2" scope="row">Launch</th>
+								<td class="ttl"><a href="glossary.php3?term=phone-life-cycle">Announced</a></td>
+								<td class="nfo" data-spec="year">2019, September</td>
+								</tr>	
+								<tr>
+								<td class="ttl"><a href="glossary.php3?term=phone-life-cycle">Status</a></td>
+								<td class="nfo" data-spec="status">Available. Released 2019, September</td>
+								</tr>
+								</table>
+								
+								
+								<table cellspacing="0">
+								<tr>
+								<th rowspan="6" scope="row">Body</th>
+								<td class="ttl"><a href=# onClick="helpW('h_dimens.htm');">Dimensions</a></td>
+								<td class="nfo" data-spec="dimensions">150.9 x 75.7 x 8.3 mm (5.94 x 2.98 x 0.33 in)</td>
+								</tr><tr>
+								<td class="ttl"><a href=# onClick="helpW('h_weight.htm');">Weight</a></td>
+								<td class="nfo" data-spec="weight">194 g (6.84 oz)</td>
+								</tr>
+								<tr>
+								<td class="ttl"><a href="glossary.php3?term=build">Build</a></td>
+								<td class="nfo" data-spec="build">Front/back glass, aluminum frame (7000 series)</td>
+								</tr>
+								<tr>
+								<td class="ttl"><a href="glossary.php3?term=sim">SIM</a></td>
+								<td class="nfo" data-spec="sim">Single SIM (Nano-SIM and/or Electronic SIM card) or Dual SIM (Nano-SIM, dual stand-by) - for China</td>
+								</tr>
+								<tr><td class="ttl">&nbsp;</td><td class="nfo" data-spec="bodyother">IP68 dust/water resistant (up to 2m for 30 mins)<br />
+								Apple Pay (Visa, MasterCard, AMEX certified)</td></tr>
+										
+								</table>
+								
+								
+								<table cellspacing="0">
+								<tr>
+								<th rowspan="5" scope="row">Display</th>
+								<td class="ttl"><a href="glossary.php3?term=display-type">Type</a></td>
+								<td class="nfo" data-spec="displaytype">Liquid Retina IPS LCD capacitive touchscreen, 16M colors</td>
+								</tr>
+								<tr>
+								<td class="ttl"><a href=# onClick="helpW('h_dsize.htm');">Size</a></td>
+								<td class="nfo" data-spec="displaysize">6.1 inches, 90.3 cm<sup>2</sup> (~79.0% screen-to-body ratio)</td>
+								</tr>
+								<tr>
+								<td class="ttl"><a href="glossary.php3?term=resolution">Resolution</a></td>
+								<td class="nfo" data-spec="displayresolution">828 x 1792 pixels, 19.5:9 ratio (~326 ppi density)</td>
+								</tr>
+								<tr>
+								<td class="ttl"><a href="glossary.php3?term=screen-protection">Protection</a></td>
+								<td class="nfo" data-spec="displayprotection">Scratch-resistant glass, oleophobic coating</td>
+								</tr>
+								<tr><td class="ttl">&nbsp;</td><td class="nfo" data-spec="displayother">625 nits max brightness<br />
+								True-tone<br />
+								Wide color gamut<br />
+								120Hz touch-sensing</td></tr>
+										
+								</table>
+								
+								
+								<table cellspacing="0">
+								<tr>
+								<th rowspan="4" scope="row">Platform</th>
+								<td class="ttl"><a href="glossary.php3?term=os">OS</a></td>
+								<td class="nfo" data-spec="os">iOS 13, upgradable to iOS 13.1.2</td>
+								</tr>
+								<tr><td class="ttl"><a href="glossary.php3?term=chipset">Chipset</a></td>
+								<td class="nfo" data-spec="chipset">Apple A13 Bionic (7 nm+)</td>
+								</tr>
+								<tr><td class="ttl"><a href="glossary.php3?term=cpu">CPU</a></td>
+								<td class="nfo" data-spec="cpu">Hexa-core (2x2.65 GHz Lightning + 4x1.8 GHz Thunder)</td>
+								</tr>
+								<tr><td class="ttl"><a href="glossary.php3?term=gpu">GPU</a></td>
+								<td class="nfo" data-spec="gpu">Apple GPU (4-core graphics)</td>
+								</tr>
+								</table>
+								
+								
+								<table cellspacing="0">
+								<tr>
+								<th rowspan="5" scope="row">Memory</th>
+								<td class="ttl"><a href="glossary.php3?term=memory-card-slot">Card slot</a></td>
+								
+								
+								<td class="nfo" data-spec="memoryslot">No</td></tr>
+								
+									
+								
+								<tr>
+								<td class="ttl"><a href="glossary.php3?term=dynamic-memory">Internal</a></td>
+								<td class="nfo" data-spec="internalmemory">64GB 4GB RAM, 128GB 4GB RAM, 256GB 4GB RAM</td>
+								</tr>
+									
+								
+											
+								</td>
+								</tr>
+								</table>
+								
+								
+									<table cellspacing="0">
+									<tr>
+									<th rowspan="4" scope="row" class="small-line-height"><a href="#maincamera">Main Camera</a></th>
+										<td class="ttl"><a href="#maincamera" id="maincamera">Dual</a></td>
+									<td class="nfo" data-spec="cam1modules">12 MP, f/1.8, 26mm (wide), 1/2.55", 1.4µm, dual pixel PDAF, OIS<br />
+								12 MP, f/2.4, 13mm (ultrawide)</td>
+									</tr>
+										<tr>
+									<td class="ttl"><a href="glossary.php3?term=camera">Features</a></td>
+									<td class="nfo" data-spec="cam1features">Quad-LED dual-tone flash, HDR (photo/panorama)</td>
+									</tr>
+										<tr>
+									<td class="ttl"><a href="glossary.php3?term=camera">Video</a></td>
+									<td class="nfo" data-spec="cam1video">2160p@24/30/60fps, 1080p@30/60/120/240fps, HDR, stereo sound rec.</td>
+									</tr>
+										</table>
+								
+								
+									<table cellspacing="0">
+									<tr>
+									<th rowspan="4" scope="row" class="small-line-height">Selfie camera</th>
+										<td class="ttl"><a href="glossary.php3?term=secondary-camera">Dual</a></td>
+									<td class="nfo" data-spec="cam2modules">12 MP, f/2.2, 23mm (wide)<br />
+								SL 3D camera</td>
+									</tr>
+										<tr>
+									<td class="ttl"><a href="glossary.php3?term=secondary-camera">Features</a></td>
+									<td class="nfo" data-spec="cam2features">HDR</td>
+									</tr>
+										<tr>
+									<td class="ttl"><a href="glossary.php3?term=secondary-camera">Video</a></td>
+									<td class="nfo" data-spec="cam2video">2160p@24/30/60fps, 1080p@30/60/120fps, gyro-EIS</td>
+									</tr>
+										</table>
+								
+								
+								
+								<table cellspacing="0">
+								<tr>
+								<th rowspan="3" scope="row">Sound</th>
+								<td class="ttl"><a href="glossary.php3?term=loudspeaker">Loudspeaker</a> </td>
+								<td class="nfo">Yes, with stereo speakers</td>
+								</tr>
+								
+									
+								
+								<tr>
+								<td class="ttl"><a href="glossary.php3?term=audio-jack">3.5mm jack</a> </td>
+								<td class="nfo">No</td>
+								</tr>
+									
+								
+								<tr><td class="ttl">&nbsp;</td><td class="nfo" data-spec="optionalother">Active noise cancellation with dedicated mic<br />
+								Dolby Atmos<br />
+								Dolby Digital Plus</td></tr>
+									
+								</table>
+								
+								
+								<table cellspacing="0">
+								<tr>
+								<th rowspan="9" scope="row">Comms</th>
+								<td class="ttl"><a href="glossary.php3?term=wi-fi">WLAN</a></td>
+								<td class="nfo" data-spec="wlan">Wi-Fi 802.11 a/b/g/n/ac/ax, dual-band, hotspot</td>
+								</tr>
+								<tr>
+								<td class="ttl"><a href="glossary.php3?term=bluetooth">Bluetooth</a></td>
+								<td class="nfo" data-spec="bluetooth">5.0, A2DP, LE</td>
+								</tr>
+								<tr>
+								<td class="ttl"><a href="glossary.php3?term=gps">GPS</a></td>
+								<td class="nfo" data-spec="gps">Yes, with A-GPS, GLONASS, GALILEO, QZSS</td>
+								</tr>  
+								<tr>
+								<td class="ttl"><a href="glossary.php3?term=nfc">NFC</a></td>
+								<td class="nfo" data-spec="nfc">Yes</td>
+								</tr>
+									
+									
+								<tr>
+								<td class="ttl"><a href="glossary.php3?term=fm-radio">Radio</a></td>
+								<td class="nfo" data-spec="radio">No</td>
+								</tr>
+								   
+								<tr>
+								<td class="ttl"><a href="glossary.php3?term=usb">USB</a></td>
+								<td class="nfo" data-spec="usb">2.0, proprietary reversible connector</td>
+								</tr>
+								</table>
+								
+								
+								<table cellspacing="0">
+								<tr>
+								<th rowspan="9" scope="row">Features</th>
+								<td class="ttl"><a href="#feature" id="feature">Sensors</a></td>
+								<td class="nfo" data-spec="sensors">Face ID, accelerometer, gyro, proximity, compass, barometer</td>
+								</tr>
+								
+								
+									 
+								
+									 
+									 
+								<tr><td class="ttl">&nbsp;</td><td class="nfo" data-spec="featuresother">Siri natural language commands and dictation</td></tr>
+									
+								</table>
+								
+								
+								<table cellspacing="0">
+								<tr>
+								<th rowspan="7" scope="row">Battery</th>
+								<td class="ttl">&nbsp;</td>
+								<td class="nfo" data-spec="batdescription1">Non-removable Li-Ion 3110 mAh battery (11.91 Wh)</td>
+								</tr>
+								<tr>
+								<td class="ttl"><a href="glossary.php3?term=battery-charging">Charging</a></td>
+								<td class="nfo">Fast battery charging 18W: 50% in 30 min<br />
+								USB Power Delivery 2.0<br />
+								Qi wireless charging</td>
+								</tr>
+								
+								<tr>
+								<td class="ttl"><a href="glossary.php3?term=talk-time">Talk time</a></td>
+								<td class="nfo" data-spec="battalktime1">Up to 17 h (multimedia)</td>
+								</tr>
+								
+								<tr>
+								<td class="ttl"><a href="glossary.php3?term=music-playback-time">Music play</a></td>
+								<td class="nfo" data-spec="batmusicplayback1">Up to 65 h</td>
+								</tr>
+								</table>
+								
+								
+								<table cellspacing="0">
+								<tr>
+								<th rowspan="6" scope="row">Misc</th>
+								<td class="ttl"><a href="glossary.php3?term=build">Colors</a></td>
+								<td class="nfo" data-spec="colors">Black, Green, Yellow, Purple, Red, White</td>
+								</tr>
+								
+								<tr>
+								<td class="ttl"><a href="glossary.php3?term=models">Models</a></td>
+								<td class="nfo" data-spec="models">A2221, A2111, A2223</td>
+								</tr>
+								
+								<tr>
+								<td class="ttl"><a href="glossary.php3?term=sar">SAR</a></td>
+								<td class="nfo" data-spec="sar-us">1.09 W/kg (head) &nbsp; &nbsp; 1.18 W/kg (body) &nbsp; &nbsp; </td>
+								</tr>
+								<tr>
+								<td class="ttl"><a href="glossary.php3?term=sar">SAR EU</a></td>
+								<td class="nfo" data-spec="sar-eu">0.95 W/kg (head) &nbsp; &nbsp; 0.99 W/kg (body) &nbsp; &nbsp; </td>
+								</tr>
+								
+								
+								<tr>
+								<td class="ttl"><a href="glossary.php3?term=price">Price</a></td>
+								<td class="nfo" data-spec="price"><a href="apple_iphone_11-price-9848.php">&#36;&thinsp;699.00 / &#163;&thinsp;670.00 / &#8377;&thinsp;64,900</a></td>
+								</tr>
+								</table>
+								
+								
+								<table cellspacing="0">
+								<tr>
+								<th rowspan="6" scope="row">Tests</th>
+								<td class="ttl"><a href="glossary.php3?term=benchmarking">Performance</a></td>
+								<td class="nfo" data-spec="tbench">
+								<a class="noUnd" href="benchmark-test.php3?idPhone=9848#show">Basemark OS II 2.0: 5480</a></td>
+								</tr><tr>
+								
+								<td class="ttl"><a href="gsmarena_lab_tests-review-751p2.php">Display</a></td>
+								<td class="nfo">
+								<a class="noUnd" href="apple_iphone_11-review-1993p3.php#dt">Contrast ratio: 1505:1 (nominal)</a></td>
+								</tr><tr>
+								
+								<td class="ttl"><a href="gsmarena_lab_tests-review-751p5.php">Camera</a></td>
+								<td class="nfo">
+								<a class="noUnd" href="piccmp.php3?idType=1&idPhone1=9848&nSuggest=1">Photo</a> / <a class="noUnd" href="vidcmp.php3?idType=3&idPhone1=9848&nSuggest=1">Video</a></td>
+								</tr><tr>
+								
+								<td class="ttl"><a href="gsmarena_lab_tests-review-751p3.php">Loudspeaker</a></td>
+								<td class="nfo">
+								<a class="noUnd" href="apple_iphone_11-review-1993p3.php#lt">Voice 70dB / Noise 72dB / Ring 76dB</a>
+								
+								</td>
+								</tr><tr>
+								
+								<td class="ttl"><a href="gsmarena_lab_tests-review-751p4.php">Audio quality</a></td>
+								<td class="nfo">
+								<a class="noUnd" href="apple_iphone_11-review-1993p3.php#aq">Noise -94.2dB / Crosstalk -80.8dB</a></td>
+								</tr><tr>
+								
+								
+								<td class="ttl"><a href="gsmarena_lab_tests-review-751p6.php">Battery life</a></td>
+								<td class="nfo" data-spec="batlife">
+								<div style="position:relative;">
+								<a href="#" onclick="showBatteryPopup(event, 9848); ">Endurance rating 94h</a><div class="popover top" id="battery-popover" style="display: none;"></div>
+								</div>
+								</td>
+								</tr><tr>
+								
+								</tr></table>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Magenta AI</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Sidebar -->
+			<section id="sidebar">
+				<div class="inner">
+					<nav>
+						<ul>
+							<li><a id='selectWelcome' href="#intro">Welcome</a></li>
+							<li><a id='selectPhones' href="generic.html">Phones</a></li>
+							<li id='selectPlans'><a href="#two">Plans</a></li>
+							<li id='selectPromotions'><a href="#three">Promotions</a></li>
+						</ul>
+					</nav>
+				</div>
+			</section>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Intro -->
+					<section id="intro" class="wrapper style1 fullscreen fade-up">
+						<div class="inner">
+							<h1>Magenta AI</h1>
+							<p>Automating the telecom industry<br />
+							</p>
+							<ul class="actions">
+								<li><a href="#one" class="button scrolly">Learn more</a></li>
+							</ul>
+
+							<button id='btnGiveCommand'>Give Command!</button>
+    						<br><br>
+    						<span id='message'></span>
+    						<br><br>
+
+							<script>
+								var message = document.querySelector('#message');
+								var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+								var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
+								var grammar = '#JSGF V1.0;'
+								var recognition = new SpeechRecognition();
+								var speechRecognitionList = new SpeechGrammarList();
+								speechRecognitionList.addFromString(grammar, 1);
+								recognition.grammars = speechRecognitionList;
+								recognition.lang = 'en-US';
+								recognition.interimResults = false;
+								recognition.onresult = function(event) {
+									var last = event.results.length - 1;
+									var command = event.results[last][0].transcript;
+									message.textContent = 'Voice Input: ' + command + '.';
+									if(command.toLowerCase() === 'select welcome'){
+										document.getElementById('selectWelcome').click();
+									}
+									else if (command.toLowerCase() === 'selectfone'){
+										document.getElementById("selectPhones").click();
+									}
+									else if (command.toLowerCase() === 'select plans'){
+										document.getElementById('selectPlans').click();
+									}
+									else if (command.toLowerCase() === 'select promotions'){
+										document.getElementById('selectPromotions').click();
+									}   
+								};
+								recognition.onspeechend = function() {
+									recognition.stop();
+								};
+								recognition.onerror = function(event) {
+									message.textContent = 'Error occurred in recognition: ' + event.error;
+								}        
+								document.querySelector('#btnGiveCommand').addEventListener('click', function(){
+									recognition.start();
+								});
+							</script>
+
+
+						</div>
+					</section>
+
+				<!-- One -->
+					<section id="one" class="wrapper style2 spotlights">
+						<section>
+							<a href="#" class="image"><img src="images/plan.jpg" alt="" data-position="center center" /></a>
+							<div class="content">
+								<div class="inner">
+									<h2>Phone Plans for Everyone</h2>
+									<p>There's a phone plan for everyone. Whether you're a big family or a single subscriber.</p>
+									<ul class="actions">
+										<li><a href="generic.html" class="button">Learn more</a></li>
+									</ul>
+								</div>
+							</div>
+						</section>
+						<section>
+							<a href="#" class="image"><img src="images/phone.jpg" alt="" data-position="top center" /></a>
+							<div class="content">
+								<div class="inner">
+									<h2>The Latest Phones</h2>
+									<p>Get the latest iPhone or the Android phone that meets your needs</p>
+									<ul class="actions">
+										<li><a href="generic.html" class="button">Learn more</a></li>
+									</ul>
+								</div>
+							</div>
+						</section>
+						<section>
+							<a href="#" class="image"><img src="images/sale.jpg" alt="" data-position="25% 25%" /></a>
+							<div class="content">
+								<div class="inner">
+									<h2>Big Promotions</h2>
+									<p></p>
+									<ul class="actions">
+										<li><a href="generic.html" class="button">Learn more</a></li>
+									</ul>
+								</div>
+							</div>
+						</section>
+					</section>
+
+				<!-- Two -->
+					
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
